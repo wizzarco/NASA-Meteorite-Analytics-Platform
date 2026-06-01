@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter / Databricks exports
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Databricks
+.databricks/
+
+# Temporary files
+tmp/
+temp/
+
+# Spark
+metastore_db/
+spark-warehouse/
+
+# Delta local testing
+_delta_log/
