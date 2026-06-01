@@ -1,32 +1,55 @@
 # 🚀 NASA Meteorite Analytics Platform
-
-NASA Meteorite Analytics Platform is an end-to-end Data Engineering and Analytics project built on Databricks.
-The goal of the project is to transform raw NASA meteorite landing data into reliable and insightful analytics through a modern Medallion Architecture (Bronze, Silver, Gold).
-The platform ingests meteorite datasets, performs data cleaning and transformation using PySpark and SQL, stores curated data in Delta Lake, and delivers interactive dashboards directly in Databricks.
+NASA Meteorite Analytics Platform is an end-to-end Data Engineering project focused on collecting, processing, and analyzing NASA Near-Earth Object (NEO) data.
+The platform extracts asteroid and close-approach data from NASA APIs, stores raw datasets in a Bronze layer, applies transformations through a Medallion Architecture (Bronze, Silver, Gold), and delivers analytical insights using Databricks, PySpark, Delta Lake, and SQL.
 
 ## Key Features
-☄️ Meteorite landing analysis
-🌍 Geospatial visualization of meteorite discoveries
-📈 Historical trends and yearly evolution
-⚖️ Meteorite mass distribution analysis
-🏆 Largest meteorites ranking
+☄️ Near-Earth Object (NEO) monitoring
+🌍 Earth close-approach analysis
+⚠️ Potentially hazardous asteroid tracking
+📏 Asteroid size and magnitude analysis
+🚀 Velocity and distance analytics
 📊 Interactive Databricks dashboards
-🔄 Automated data pipelines
+🔄 Automated ingestion pipelines
+🏗️ Medallion Architecture implementation
 
 ## Tech Stack
-- Databricks
-- PySpark
-- Delta Lake
-- SQL
-- Python
-- Git & GitHub
+* Python
+* Databricks
+* PySpark
+* Delta Lake
+* SQL
+* Pandas
+* Git & GitHub
 
 ## Architecture
-Raw Data → Bronze → Silver → Gold → Databricks Dashboards
+NASA API → Bronze (Raw JSON) → Silver (Cleaned Data) → Gold (Business Analytics) → Databricks Dashboards
 
 ## Project Objectives
-- Demonstrate modern Data Engineering practices
-- Build an end-to-end analytics platform
-- Apply Medallion Architecture principles
-- Showcase Databricks and Delta Lake expertise
-- Explore NASA meteorite data through interactive analytics
+* Demonstrate modern Data Engineering practices
+* Build an end-to-end analytics platform
+* Implement a Medallion Architecture
+* Showcase Databricks and Delta Lake expertise
+* Develop automated ingestion pipelines
+* Analyze Near-Earth Objects and potential Earth impact risks
+
+<!-- ## Current Progress
+
+### ✅ Completed
+* NASA API integration
+* Environment configuration management (.env)
+* Raw JSON ingestion
+* Bronze layer generation
+* GitHub integration
+* Project structure setup
+
+### 🚧 In Progress
+* Databricks Bronze ingestion
+* Silver layer transformations
+* Data quality checks
+
+### 📅 Planned
+* Gold analytical tables
+* Threat scoring model
+* Interactive dashboards
+* Automated pipeline scheduling
+* Historical trend analysis -->
