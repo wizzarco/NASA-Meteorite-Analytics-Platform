@@ -22,7 +22,21 @@ The platform extracts asteroid and close-approach data from NASA APIs, stores ra
 * Git & GitHub
 
 ## Architecture
-NASA API → Bronze (Raw JSON) → Silver (Cleaned Data) → Gold (Business Analytics) → Databricks Dashboards
+NASA API
+    ↓
+Python Ingestion Jobs
+    ↓
+Cloud Storage (Bronze)
+    ↓
+Databricks
+        ↓
+    Bronze
+        ↓
+    Silver
+        ↓
+    Gold
+        ↓
+    Dashboard
 
 ## Project Objectives
 * Demonstrate modern Data Engineering practices

@@ -14,7 +14,9 @@ class NasaExtractor:
         return datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     
     BASE_URL = "https://api.nasa.gov"
-    def get_daily_neos(self):
+
+    # DELTA
+    def get_delta_neos(self):
         url = (
             f"{self.BASE_URL}/neo/rest/v1/feed"
             f"?start_date={self.get_date()}"
@@ -34,7 +36,9 @@ class NasaExtractor:
             json.dump(data, file, indent=4)
         print(f"Delta file saved: {file_path}")
 
-    def get_all_neos(self, max_pages=50): # Limit pages because we have to much data for my little storage :(
+
+    # FULL
+    def get_all_neos(self, max_pages=10): # Limit pages because we have to much data for my little storage :(
         all_neos = []
         page = 0
         while page < max_pages:

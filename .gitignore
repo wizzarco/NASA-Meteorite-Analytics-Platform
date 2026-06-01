@@ -37,4 +37,5 @@ spark-warehouse/
 _delta_log/
 
 # Data
-data/
+data/*
+!data/.gitkeep
