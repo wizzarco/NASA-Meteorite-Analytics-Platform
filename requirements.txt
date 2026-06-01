@@ -1,3 +1,5 @@
 # Install this list, without module, you cannot launch the project
 requests
 python-dotenv
+pandas
+pyarrow

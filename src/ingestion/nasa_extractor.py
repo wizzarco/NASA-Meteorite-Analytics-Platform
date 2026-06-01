@@ -19,11 +19,11 @@ class NasaExtractor:
         response.raise_for_status()
         return response.json()
 
-    def save_raw_data(self, data):
-        raw_folder = Path("data/raw")
-        raw_folder.mkdir(parents=True, exist_ok=True)
+    def save_bronze_data(self, data):
+        bronze_folder = Path("data/bronze")
+        bronze_folder.mkdir(parents=True, exist_ok=True)
         file_name = f"{datetime.now().strftime('%Y-%m-%d')}.json"
-        file_path = raw_folder / file_name
+        file_path = bronze_folder / file_name
         with open(file_path, "w", encoding="utf-8") as file:
             json.dump(data, file, indent=4)
 

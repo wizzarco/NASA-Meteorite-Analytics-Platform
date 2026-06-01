@@ -1,9 +1,8 @@
 from src.ingestion.nasa_extractor import NasaExtractor
-from src.transformation.neo_parser import NeoParser
+from src.storage.parquet_writer import ParquetWriter
 
 extractor = NasaExtractor()
-parser = NeoParser()
-
+writer = ParquetWriter()
 data = extractor.get_near_earth_objects()
-records = parser.parse(data)
-print(records[0])
+
+writer.save(data)

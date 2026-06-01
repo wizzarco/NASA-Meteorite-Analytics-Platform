@@ -35,6 +35,3 @@ spark-warehouse/
 
 # Delta local testing
 _delta_log/
-
-# Data
-data/
