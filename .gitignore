@@ -37,5 +37,13 @@ spark-warehouse/
 _delta_log/
 
 # Data
-data/*
-!data/.gitkeep
+data/**
+!data/
+!data/bronze/
+!data/bronze/full
+!data/bronze/delta
+!data/silver/
+!data/gold/
+!data/bronze/.gitkeep
+!data/silver/.gitkeep
+!data/gold/.gitkeep
