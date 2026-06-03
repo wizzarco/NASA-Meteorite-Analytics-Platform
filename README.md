@@ -24,19 +24,21 @@ The platform extracts asteroid and close-approach data from NASA APIs, stores ra
 ## Architecture
 NASA API
     ↓
-Python Ingestion Jobs
+Python Ingestion Layer
     ↓
-Cloud Storage (Bronze)
+Azure Blob Storage OR Local Storage
+        ↓
+    Bronze Layer
+        ├── delta/
+        └── full/
     ↓
 Databricks
-        ↓
-    Bronze
-        ↓
-    Silver
-        ↓
-    Gold
-        ↓
-    Dashboard
+    ↓
+Silver Layer
+    ↓
+Gold Layer
+    ↓
+Analytics Dashboard (Power BI or Databricks Dashboard or Both)
 
 ## Project Objectives
 * Demonstrate modern Data Engineering practices
@@ -45,25 +47,3 @@ Databricks
 * Showcase Databricks and Delta Lake expertise
 * Develop automated ingestion pipelines
 * Analyze Near-Earth Objects and potential Earth impact risks
-
-<!-- ## Current Progress
-
-### ✅ Completed
-* NASA API integration
-* Environment configuration management (.env)
-* Raw JSON ingestion
-* Bronze layer generation
-* GitHub integration
-* Project structure setup
-
-### 🚧 In Progress
-* Databricks Bronze ingestion
-* Silver layer transformations
-* Data quality checks
-
-### 📅 Planned
-* Gold analytical tables
-* Threat scoring model
-* Interactive dashboards
-* Automated pipeline scheduling
-* Historical trend analysis -->
