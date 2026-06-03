@@ -3,8 +3,10 @@ import json
 from pathlib import Path
 from datetime import datetime
 from src.config.settings import NASA_API_KEY
+from src.storage.azure_blob_client import AzureBlobClient
 
 class NasaExtractor:
+    ### CONFIG ###
     @staticmethod
     def get_date():
         return datetime.now().strftime("%Y-%m-%d")
@@ -14,8 +16,10 @@ class NasaExtractor:
         return datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     
     BASE_URL = "https://api.nasa.gov"
+    def __init__(self):
+        self.azure_client = AzureBlobClient()
 
-    # DELTA
+    ### DELTA ###
     def get_delta_neos(self):
         url = (
             f"{self.BASE_URL}/neo/rest/v1/feed"
@@ -27,6 +31,7 @@ class NasaExtractor:
         response.raise_for_status()
         return response.json()
 
+    # DELTA SAVE LOCAL STORAGE
     def save_delta_data(self, data):
         delta_folder = Path("data/bronze/delta")
         delta_folder.mkdir(parents=True, exist_ok=True)
@@ -36,8 +41,19 @@ class NasaExtractor:
             json.dump(data, file, indent=4)
         print(f"Delta file saved: {file_path}")
 
+    # DELTA SAVE CLOUD STORAGE WITH AZURE
+    def upload_delta_data(self, data):
+        blob_name = (
+            f"delta/neo_delta_{self.get_timestamp()}.json"
+        )
 
-    # FULL
+        self.azure_client.upload_json(
+            container_name="bronze",
+            blob_name=blob_name,
+            data=data
+        )
+
+    ### FULL ###
     def get_all_neos(self, max_pages=10): # Limit pages because we have to much data for my little storage :(
         all_neos = []
         page = 0
@@ -58,6 +74,7 @@ class NasaExtractor:
             page += 1
         return all_neos
 
+    # FULL SAVE LOCAL STORAGE
     def save_full_data(self, data):
         full_folder = Path("data/bronze/full")
         full_folder.mkdir(parents=True, exist_ok=True)
@@ -66,3 +83,15 @@ class NasaExtractor:
         with open(file_path, "w", encoding="utf-8") as file:
             json.dump(data, file, indent=4)
         print(f"Full file saved: {file_path}")
+
+    # FULL SAVE CLOUD STORAGE
+    def upload_full_data(self, data):
+        blob_name = (
+            f"full/neo_full_{self.get_timestamp()}.json"
+        )
+
+        self.azure_client.upload_json(
+            container_name="bronze",
+            blob_name=blob_name,
+            data=data
+        )
